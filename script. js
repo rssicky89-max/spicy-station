@@ -1,0 +1,22 @@
+const reveals = document.querySelectorAll("section");
+
+function revealSections() {
+  reveals.forEach((section) => {
+    const top = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight - 100) {
+      section.style.opacity = "1";
+      section.style.transform = "translateY(0)";
+    }
+  });
+}
+
+reveals.forEach((section) => {
+  section.style.opacity = "0";
+  section.style.transform = "translateY(50px)";
+  section.style.transition = "all 0.8s ease";
+});
+
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
