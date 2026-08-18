@@ -10,28 +10,25 @@ let selectedPayment = "";
 // WELCOME → MAIN APP
 // ==========================================
 
-    showCategory("all");
 function openMenu() {
-
     const welcome = document.getElementById("welcome");
     const mainApp = document.getElementById("main-app");
 
-    // Welcome hide
     if (welcome) {
         welcome.style.display = "none";
     }
 
-    // Main app show
     if (mainApp) {
         mainApp.style.display = "block";
         mainApp.style.visibility = "visible";
         mainApp.style.opacity = "1";
     }
 
-    // Page ko top par lao
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-    // All category show
     showCategory("all");
 }
 
@@ -41,13 +38,10 @@ function openMenu() {
 // ==========================================
 
 function showCategory(category) {
-
     const items = document.querySelectorAll(".menu-item");
     const buttons = document.querySelectorAll(".category");
 
-    // Update active category button
     buttons.forEach(button => {
-
         button.classList.remove("active");
 
         const onclick = button.getAttribute("onclick");
@@ -55,27 +49,17 @@ function showCategory(category) {
         if (onclick && onclick.includes(`'${category}'`)) {
             button.classList.add("active");
         }
-
     });
 
-
-    // Show / hide menu items
     items.forEach(item => {
-
         const itemCategory = item.getAttribute("data-category");
 
         if (category === "all" || itemCategory === category) {
-
             item.style.display = "";
-
         } else {
-
             item.style.display = "none";
-
         }
-
     });
-
 }
 
 
@@ -84,17 +68,14 @@ function showCategory(category) {
 // ==========================================
 
 function changeQty(name, price, change) {
-
     price = Number(price);
     change = Number(change);
 
     if (!cart[name]) {
-
         cart[name] = {
             price: price,
             qty: 0
         };
-
     }
 
     cart[name].qty += change;
@@ -106,30 +87,21 @@ function changeQty(name, price, change) {
     updateQuantityDisplay(name);
     updateBasket();
     updateBasketCount();
-
 }
 
 
 // ==========================================
-// UPDATE ITEM QUANTITY DISPLAY
+// UPDATE QUANTITY DISPLAY
 // ==========================================
 
 function updateQuantityDisplay(name) {
-
     const element = document.getElementById("qty-" + name);
 
     if (!element) return;
 
-    if (cart[name]) {
-
-        element.textContent = cart[name].qty;
-
-    } else {
-
-        element.textContent = "0";
-
-    }
-
+    element.textContent = cart[name]
+        ? cart[name].qty
+        : "0";
 }
 
 
@@ -138,24 +110,19 @@ function updateQuantityDisplay(name) {
 // ==========================================
 
 function updateBasketCount() {
-
-    const basketCount =
-        document.getElementById("basket-count");
+    const basketCount = document.getElementById("basket-count");
 
     if (!basketCount) return;
 
     let count = 0;
 
     Object.values(cart).forEach(item => {
-
         if (item.qty > 0) {
             count += item.qty;
         }
-
     });
 
     basketCount.textContent = count;
-
 }
 
 
@@ -164,16 +131,13 @@ function updateBasketCount() {
 // ==========================================
 
 function openBasket() {
-
-    const basketPanel =
-        document.getElementById("basket-panel");
+    const basketPanel = document.getElementById("basket-panel");
 
     if (!basketPanel) return;
 
     basketPanel.classList.add("show");
 
     updateBasket();
-
 }
 
 
@@ -182,14 +146,11 @@ function openBasket() {
 // ==========================================
 
 function closeBasket() {
-
-    const basketPanel =
-        document.getElementById("basket-panel");
+    const basketPanel = document.getElementById("basket-panel");
 
     if (!basketPanel) return;
 
     basketPanel.classList.remove("show");
-
 }
 
 
@@ -198,12 +159,8 @@ function closeBasket() {
 // ==========================================
 
 function updateBasket() {
-
-    const basketItems =
-        document.getElementById("basket-items");
-
-    const basketTotal =
-        document.getElementById("basket-total");
+    const basketItems = document.getElementById("basket-items");
+    const basketTotal = document.getElementById("basket-total");
 
     if (!basketItems || !basketTotal) return;
 
@@ -212,24 +169,19 @@ function updateBasket() {
     let total = 0;
     let itemCount = 0;
 
-
     Object.entries(cart).forEach(([name, item]) => {
 
         if (item.qty <= 0) return;
 
         itemCount += item.qty;
 
-        const itemTotal =
-            item.price * item.qty;
+        const itemTotal = item.price * item.qty;
 
         total += itemTotal;
 
-
-        const div =
-            document.createElement("div");
+        const div = document.createElement("div");
 
         div.className = "basket-item";
-
 
         div.innerHTML = `
             <div class="basket-item-info">
@@ -263,12 +215,9 @@ function updateBasket() {
         `;
 
         basketItems.appendChild(div);
-
     });
 
-
     if (itemCount === 0) {
-
         basketItems.innerHTML = `
             <div class="empty-basket">
                 🛒 Your basket is empty
@@ -276,14 +225,11 @@ function updateBasket() {
                 Add some delicious food!
             </div>
         `;
-
     }
-
 
     basketTotal.textContent = total;
 
     updateBasketCount();
-
 }
 
 
@@ -292,15 +238,11 @@ function updateBasket() {
 // ==========================================
 
 function openPayment() {
-
     const itemCount = getCartItemCount();
 
     if (itemCount === 0) {
-
         alert("Please add at least one item to your basket.");
-
         return;
-
     }
 
     const paymentPanel =
@@ -309,7 +251,6 @@ function openPayment() {
     if (!paymentPanel) return;
 
     paymentPanel.classList.add("show");
-
 }
 
 
@@ -318,14 +259,12 @@ function openPayment() {
 // ==========================================
 
 function closePayment() {
-
     const paymentPanel =
         document.getElementById("payment-panel");
 
     if (!paymentPanel) return;
 
     paymentPanel.classList.remove("show");
-
 }
 
 
@@ -334,17 +273,13 @@ function closePayment() {
 // ==========================================
 
 function selectPayment(method) {
-
     selectedPayment = method;
 
     document
         .querySelectorAll(".payment-option")
         .forEach(button => {
-
             button.classList.remove("selected");
-
         });
-
 }
 
 
@@ -353,15 +288,11 @@ function selectPayment(method) {
 // ==========================================
 
 function payWithUPI() {
-
     const total = calculateTotal();
 
     if (total <= 0) {
-
         alert("Please add items to your basket first.");
-
         return;
-
     }
 
     selectedPayment = "UPI";
@@ -374,7 +305,6 @@ function payWithUPI() {
         "&cu=INR";
 
     window.location.href = upiURL;
-
 }
 
 
@@ -389,22 +319,15 @@ function copyUPI() {
         navigator.clipboard
             .writeText(UPI_ID)
             .then(() => {
-
                 alert("UPI ID copied: " + UPI_ID);
-
             })
             .catch(() => {
-
                 fallbackCopy(UPI_ID);
-
             });
 
     } else {
-
         fallbackCopy(UPI_ID);
-
     }
-
 }
 
 
@@ -424,7 +347,6 @@ function fallbackCopy(text) {
     textarea.remove();
 
     alert("UPI ID copied: " + text);
-
 }
 
 
@@ -434,28 +356,19 @@ function fallbackCopy(text) {
 
 function orderDone() {
 
-    const itemCount =
-        getCartItemCount();
+    const itemCount = getCartItemCount();
 
     if (itemCount === 0) {
-
         alert("Your basket is empty.");
-
         return;
-
     }
-
 
     if (!selectedPayment) {
-
         selectedPayment = "Cash on Delivery";
-
     }
-
 
     closePayment();
     closeBasket();
-
 
     const orderStatus =
         document.getElementById("order-status");
@@ -472,15 +385,12 @@ function orderDone() {
             });
 
         }, 150);
-
     }
-
 
     alert(
         "Order confirmed! 🌶️\n\n" +
         "Payment: " + selectedPayment
     );
-
 }
 
 
@@ -495,15 +405,12 @@ function calculateTotal() {
     Object.values(cart).forEach(item => {
 
         if (item.qty > 0) {
-
             total += item.price * item.qty;
-
         }
 
     });
 
     return total;
-
 }
 
 
@@ -518,15 +425,12 @@ function getCartItemCount() {
     Object.values(cart).forEach(item => {
 
         if (item.qty > 0) {
-
             count += item.qty;
-
         }
 
     });
 
     return count;
-
 }
 
 
@@ -542,7 +446,6 @@ function escapeHTML(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
 
 
@@ -551,7 +454,6 @@ function escapeAttribute(value) {
     return String(value)
         .replace(/\\/g, "\\\\")
         .replace(/'/g, "\\'");
-
 }
 
 
@@ -567,22 +469,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainApp =
         document.getElementById("main-app");
 
-
     // Welcome screen ON
     if (welcome) {
-
         welcome.style.display = "flex";
-
     }
-
 
     // Main app OFF
     if (mainApp) {
-
         mainApp.style.display = "none";
-
     }
 
+    // Initial category
+    showCategory("all");
 
     // Initial basket
     updateBasket();
