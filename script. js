@@ -1,4 +1,4 @@
-alert("SCRIPT LOADED"); 
+alert("JS LOADED");
 cart = {};
 const UPI_ID = "8117833787@YBL";
 const BUSINESS_NAME = "Spicy Station Fast Food";
