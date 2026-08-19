@@ -16,6 +16,7 @@
 
 <body>
 
+</script>
 <!-- ================= WELCOME ================= -->
 
 <section class="welcome-screen" id="welcome">
@@ -24,7 +25,10 @@
 
         <div class="welcome-logo">🌶️</div>
 
-        <h1>Welcome to<br>Spicy Station Fast Food</h1>
+        <h1>
+            Welcome to<br>
+            Spicy Station Fast Food
+        </h1>
 
         <p>Fresh • Tasty • 100% Halal</p>
 
@@ -41,7 +45,7 @@
 
 <div id="main-app">
 
-    <!-- HEADER -->
+    <!-- ================= HEADER ================= -->
 
     <header>
 
@@ -56,6 +60,16 @@
         </button>
 
     </header>
+
+
+    <!-- ================= GO TO CART ================= -->
+
+    <button
+        id="go-cart-btn"
+        class="go-cart-btn"
+        onclick="openBasket()">
+        🛒 Go to Cart
+    </button>
 
 
     <!-- ================= CATEGORIES ================= -->
@@ -486,19 +500,27 @@
 
         <div class="payment-box">
 
-            <button class="close-btn" onclick="closePayment()">✕</button>
+            <button class="close-btn" onclick="closePayment()">
+                ✕
+            </button>
 
             <h2>💳 Payment Options</h2>
 
-            <button class="payment-option" onclick="selectPayment('Cash on Delivery')">
+            <button
+                class="payment-option"
+                onclick="selectPayment('Cash on Delivery')">
                 💵 Cash on Delivery
             </button>
 
-            <button class="payment-option" onclick="payWithUPI()">
+            <button
+                class="payment-option"
+                onclick="payWithUPI()">
                 📱 Pay with UPI
             </button>
 
-            <button class="payment-option" onclick="payWithUPI()">
+            <button
+                class="payment-option"
+                onclick="payWithUPI()">
                 🟣 PhonePe / Google Pay / Paytm
             </button>
 
@@ -606,13 +628,22 @@
     <!-- ================= FOOTER ================= -->
 
     <footer>
+
         <p>© 2026 Spicy Station Fast Food</p>
+
     </footer>
 
 </div>
 
 
-<script src="./script.js?v=2"></script>
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+window.openMenu = function () {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("main-app").style.display = "block";
+};
+</script>
+<script src="script.js"></script>
 
 </body>
 </html>
