@@ -1,800 +1,283 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #111;
-    color: #fff;
-    overflow-x: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff8f0;
+    color: #222;
 }
 
-button,
-a {
-    font-family: inherit;
-}
+/* =========================
+   WELCOME PAGE
+========================= */
 
-button {
-    cursor: pointer;
-}
-
-
-/* ================= WELCOME ================= */
-
-.welcome-screen {
+#welcome {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 25px;
-    background:
-        radial-gradient(circle at center, #5c1200 0%, #220700 35%, #080808 75%);
+    background: linear-gradient(135deg, #8b0000, #e63900);
+    color: white;
 }
 
-.welcome-content {
-    width: 100%;
-    max-width: 500px;
-    animation: welcomeIn 1s ease;
-}
-
-.welcome-logo {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 65px;
-
-    background: linear-gradient(145deg, #111, #000);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 25px #ffd000,
-        0 0 60px rgba(255, 208, 0, 0.5);
-
-    animation: pulseLogo 2s infinite;
-}
-
-.welcome-content h1 {
-    font-size: clamp(32px, 8vw, 58px);
-    line-height: 1.15;
-    font-weight: 700;
-
-    background: linear-gradient(90deg, #fff, #ffb300, #ff3d00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.welcome-content p {
-    margin: 15px 0 30px;
-    color: #ddd;
-    font-size: 17px;
-    letter-spacing: 1px;
-}
-
-
-/* ================= BUTTON ================= */
-
-.btn {
-    display: inline-block;
-    border: none;
-
-    padding: 13px 24px;
-    margin: 6px;
-
-    border-radius: 30px;
-
-    color: #111;
-    text-decoration: none;
-
-    font-weight: 700;
-
-    background: #ffd000;
-
-    box-shadow: 0 6px 20px rgba(255, 208, 0, 0.3);
-
-    transition: 0.25s ease;
-}
-
-.btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    background: #ffe04d;
-    box-shadow: 0 8px 25px rgba(255, 208, 0, 0.5);
-}
-
-
-/* ================= MAIN APP ================= */
-
-#main-app {
-    display: none;
-    min-height: 100vh;
-}
-
-
-/* ================= HEADER ================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 15px 5%;
-
-    background: rgba(15, 15, 15, 0.95);
-    backdrop-filter: blur(10px);
-
-    border-bottom: 1px solid rgba(255, 152, 0, 0.2);
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ffd000;
-    text-shadow: 0 0 10px rgba(255, 208, 0, 0.5);
-}
-
-
-/* ================= BASKET BUTTON ================= */
-
-.basket-btn {
-    position: relative;
-
-    border: none;
-    border-radius: 25px;
-
-    padding: 10px 16px;
-
-    background: #ff3d00;
-    color: #fff;
-
-    font-weight: 600;
-}
-
-.basket-btn i {
-    margin-right: 5px;
-}
-
-.basket-btn b {
-    position: absolute;
-
-    top: -8px;
-    right: -8px;
-
-    min-width: 22px;
-    height: 22px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    background: #fff;
-    color: #ff3d00;
-
-    font-size: 12px;
-}
-
-
-/* ================= CATEGORIES ================= */
-
-.categories-section {
-    padding: 25px 5% 10px;
-}
-
-.categories-section h2,
-.menu h2,
-.gallery h2,
-.contact h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.categories {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 8px 2px 15px;
-}
-
-.categories::-webkit-scrollbar {
-    display: none;
-}
-
-.category {
-    flex-shrink: 0;
-
-    border: 1px solid #444;
-    border-radius: 25px;
-
-    padding: 10px 18px;
-
-    background: #222;
-    color: #fff;
-
-    transition: 0.25s;
-}
-
-.category.active,
-.category:hover {
-    background: #ffd000;
-    color: #111;
-    border-color: #ffd000;
-    box-shadow: 0 0 15px rgba(255, 208, 0, 0.35);
-    transform: scale(1.05);
-}
-
-
-/* ================= MENU ================= */
-
-.menu {
-    padding: 20px 5% 40px;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: linear-gradient(145deg, #242424, #151515);
-
-    border: 1px solid #333;
-    border-radius: 18px;
-
-    padding: 18px;
-    text-align: center;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-
-    transition: 0.25s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #ffd000;
-    box-shadow: 0 10px 30px rgba(255, 208, 0, 0.18);
-}
-
-.card h3 {
-    font-size: 17px;
-    margin-bottom: 8px;
-}
-
-.card p {
-    color: #ffd000;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.sub-item {
-    margin-top: 20px;
-}
-
-
-/* ================= QUANTITY ================= */
-
-.quantity {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 12px;
-    margin-top: 15px;
-}
-
-.quantity button {
-    width: 36px;
-    height: 36px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #ffd000;
-    color: #111;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    transition: 0.2s ease;
-}
-
-.quantity button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 12px rgba(255, 208, 0, 0.5);
-}
-
-.quantity span {
-    min-width: 25px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-
-/* ================= BASKET ================= */
-
-.basket-panel {
-    position: fixed;
-
-    right: -100%;
-    top: 0;
-
-    width: min(420px, 100%);
-    height: 100vh;
-
-    z-index: 2000;
-
-    background: #111;
-
-    border-left: 1px solid #333;
-
-    padding: 20px;
-
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
-
-    transition: right 0.35s ease;
-
-    overflow-y: auto;
-}
-
-.basket-panel.show {
-    right: 0;
-}
-
-.basket-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
-}
-
-.basket-header button,
-.close-btn {
-    border: none;
-
-    background: #ffd000;
-    color: #111;
-
-    width: 35px;
-    height: 35px;
-
-    border-radius: 50%;
-}
-
-.basket-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
-}
-
-.basket-item-info {
-    flex: 1;
-}
-
-.basket-item-name {
-    font-weight: 600;
-}
-
-.basket-item-price {
-    color: #ffd000;
-    font-size: 14px;
-}
-
-.basket-qty {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-
-.basket-qty button {
-    width: 28px;
-    height: 28px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #ffd000;
-    color: #111;
-
-    font-weight: bold;
-}
-
-.basket-total {
-    margin-top: 25px;
-    text-align: center;
-}
-
-.empty-basket {
-    text-align: center;
-    color: #aaa;
-    padding: 35px 10px;
-}
-
-
-/* ================= PAYMENT ================= */
-
-.payment-panel {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 3000;
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.payment-panel.show {
-    display: flex;
-}
-
-.payment-box {
-    position: relative;
-
-    width: 100%;
-    max-width: 400px;
-
-    max-height: 90vh;
-    overflow-y: auto;
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background: #202020;
-
-    text-align: center;
-}
-
-.payment-option {
-    width: 100%;
-
-    padding: 14px;
-    margin: 7px 0;
-
-    border: 1px solid #444;
-    border-radius: 12px;
-
-    background: #292929;
-    color: #fff;
-
-    font-size: 16px;
-    text-align: left;
-
-    transition: 0.2s;
-}
-
-.payment-option:hover,
-.payment-option.selected {
-    border-color: #ffd000;
-    box-shadow: 0 0 10px rgba(255, 208, 0, 0.2);
-}
-
-.upi-box {
-    margin: 15px 0;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    background: #111;
-}
-
-.upi-box p {
-    color: #aaa;
-    margin-bottom: 5px;
-}
-
-.upi-box strong {
-    display: block;
-    color: #ffd000;
-    font-size: 18px;
+#welcome h1 {
+    font-size: 42px;
     margin-bottom: 10px;
 }
 
-.copy-upi {
-    border: none;
-    padding: 8px 14px;
-    border-radius: 20px;
-    background: #333;
-    color: #fff;
+#welcome p {
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
-.copy-upi:hover {
-    background: #444;
-}
-
-
-/* ================= ORDER STATUS ================= */
-
-.order-status {
-    display: none;
-
-    padding: 30px 5% 50px;
-
-    text-align: center;
-}
-
-.order-status.show {
-    display: block;
-}
-
-.success-text {
-    color: #ccc;
-    margin: 10px 0 25px;
-}
-
-.status-step {
-    max-width: 500px;
-
-    margin: 12px auto;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    background: #222;
-
-    text-align: left;
-}
-
-.status-step span {
-    display: inline-flex;
-
-    width: 30px;
-    height: 30px;
-
-    justify-content: center;
-    align-items: center;
-
-    margin-right: 10px;
-
-    border-radius: 50%;
-
-    background: #444;
-}
-
-.status-step.active {
-    border: 1px solid #ffd000;
-}
-
-.status-step.active span {
-    background: #ffd000;
-    color: #111;
-}
-
-.status-address {
-    max-width: 500px;
-    margin: 25px auto 0;
-    padding: 18px;
-    border-radius: 15px;
-    background: #191919;
-    border: 1px solid #333;
-}
-
-.status-address h3 {
-    margin-bottom: 8px;
-    color: #ffd000;
-}
-
-
-/* ================= GALLERY ================= */
-
-.gallery {
-    padding: 30px 5% 50px;
-}
-
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-
-    gap: 15px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 190px;
-
-    object-fit: cover;
-
-    border-radius: 15px;
-
-    border: 1px solid #333;
-
-    transition: 0.3s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.03);
-    border-color: #ffd000;
-}
-
-
-/* ================= CONTACT ================= */
-
-.contact {
-    padding: 35px 5% 50px;
-    text-align: center;
-}
-
-.contact p {
-    max-width: 600px;
-    margin: 0 auto 20px;
-    color: #ccc;
-    line-height: 1.7;
-}
-
-
-/* ================= FOOTER ================= */
-
-footer {
-    padding: 25px;
-    text-align: center;
-    background: #080808;
-    border-top: 1px solid #222;
-    color: #888;
-}
-
-
-/* ================= ANIMATIONS ================= */
-
-@keyframes welcomeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseLogo {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.06);
-    }
-}
-
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 12px 4%;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .basket-btn {
-        padding: 9px 13px;
-    }
-
-    .menu-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .card {
-        padding: 14px 8px;
-    }
-
-    .card h3 {
-        font-size: 14px;
-    }
-
-    .card p {
-        font-size: 18px;
-    }
-
-    .quantity {
-        gap: 7px;
-    }
-
-    .quantity button {
-        width: 32px;
-        height: 32px;
-        font-size: 19px;
-    }
-
-    .welcome-content h1 {
-        font-size: 34px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-grid img {
-        height: 150px;
-    }
-}/* ================= MENU START FIX ================= */
-
-#main-app {
-    display: none;
-    width: 100%;
-    min-height: 100vh;
-}
-
-.categories-section {
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: 5;
-}
-
-.categories {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-}
-
-.menu {
-    display: block;
-    width: 100%;
-}.go-cart-btn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-
+#welcome button {
     border: none;
     border-radius: 30px;
-    padding: 14px 28px;
-
-    background: #ff9800;
-    color: white;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    padding: 15px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    background: white;
+    color: #c62828;
     cursor: pointer;
 }
 
-.go-cart-btn.show {
-    display: block;
+/* =========================
+   MAIN APP
+========================= */
+
+#main-app {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
 }
 
-.go-cart-btn:active {
-    transform: translateX(-50%) scale(0.95);
+#main-app > h1 {
+    text-align: center;
+    color: #b71c1c;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
+
+#main-app > button {
+    border: none;
+    padding: 10px 18px;
+    margin: 4px;
+    border-radius: 20px;
+    background: #eeeeee;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#main-app > button:hover {
+    background: #d32f2f;
+    color: white;
+}
+
+/* =========================
+   MENU CARDS
+========================= */
+
+.menu-item {
+    background: white;
+    margin: 15px 0;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+    text-align: center;
+}
+
+.menu-item h2 {
+    margin: 5px 0;
+    color: #333;
+}
+
+.menu-item p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/* =========================
+   QUANTITY BUTTONS
+========================= */
+
+.menu-item button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #d32f2f;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-item span {
+    display: inline-block;
+    min-width: 35px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* =========================
+   BASKET BUTTON
+========================= */
+
+#main-app > button[onclick="openBasket()"] {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #222;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   BASKET
+========================= */
+
+#basket-panel {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+#basket-panel h2 {
+    color: #b71c1c;
+}
+
+#basket-items p {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#basket-total {
+    color: #d32f2f;
+}
+
+/* =========================
+   CUSTOMER DETAILS
+========================= */
+
+#customer-details input,
+#customer-details textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+/* =========================
+   PAYMENT
+========================= */
+
+#payment-method {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff5f5;
+    border-radius: 15px;
+}
+
+#payment-method h3 {
+    color: #b71c1c;
+}
+
+/* =========================
+   ORDER BUTTONS
+========================= */
+
+#basket-panel button {
+    padding: 12px 18px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#basket-panel button[onclick="placeOrder()"] {
+    background: #25d366;
+    color: white;
+}
+
+#basket-panel button[onclick="payWithUPI()"] {
+    background: #673ab7;
+    color: white;
+}
+
+#basket-panel button[onclick="closeBasket()"] {
+    background: #555;
+    color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    #welcome h1 {
+        font-size: 34px;
+    }
+
+    #main-app {
+        padding: 15px;
+    }
+
+    .menu-item {
+        padding: 15px;
+    }
+
+}/* =========================
+   FLOATING BASKET
+========================= */
+
+#main-app > button[onclick="openBasket()"] {
+    position: sticky;
+    bottom: 15px;
+    z-index: 1000;
+
+    width: 100%;
+    padding: 16px;
+
+    border-radius: 30px;
+    font-size: 18px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+}/* =========================
+   BASKET POPUP
+========================= */
+
+#basket-panel {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: calc(100% - 30px);
+    max-width: 550px;
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    z-index: 9999;
+
+    margin: 0;
 }
