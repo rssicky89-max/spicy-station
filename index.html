@@ -1,710 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Spicy Station Fast Food</title>
 
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-</script>
-<!-- ================= WELCOME ================= -->
+    <!-- WELCOME -->
+    <section id="welcome">
 
-<section class="welcome-screen" id="welcome">
-
-    <div class="welcome-content">
-
-        <div class="welcome-logo">🌶️</div>
-
-        <h1>
-            Welcome to<br>
-            Spicy Station Fast Food
-        </h1>
+        <h1>🌶️ Spicy Station</h1>
 
         <p>Fresh • Tasty • 100% Halal</p>
 
-        <button class="btn start-btn" onclick="openMenu()">
+        <button onclick="openMenu()">
             🍽️ Start Ordering
         </button>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ================= MAIN APP ================= -->
+    <!-- MAIN APP -->
+    <section id="main-app" style="display: none;">
 
-<div id="main-app">
+    </button>
+<h1>🍽️ Our Menu</h1>
 
-    <!-- ================= HEADER ================= -->
+<button onclick="showCategory('all')">
+    All
+</button>
 
-    <header>
+<button onclick="showCategory('rice')">
+    Rice
+</button>
 
-        <div class="logo">
-            🌶️ Spicy Station
+<button onclick="showCategory('chicken')">
+    Chicken
+</button>
+
+<button onclick="showCategory('biryani')">
+    Biryani
+</button>
+
+<button onclick="showCategory('starters')">
+    Starters
+</button>
+
+<button onclick="showCategory('noodle')">
+    Noodle
+</button>
+
+<button onclick="showCategory('combo')">
+    Combo
+</button>
+
+<button onclick="showCategory('eggs')">
+    Eggs
+</button>
+        <!-- CHICKEN RICE -->
+
+        <div class="menu-item" data-category="rice">
+
+            <h2>Chicken Rice</h2>
+
+            <p>₹100</p>
+
+            <button onclick="changeQty('Chicken Rice', 100, -1)">
+                −
+            </button>
+
+            <span id="qty-Chicken Rice">0</span>
+
+            <button onclick="changeQty('Chicken Rice', 100, 1)">
+                +
+            </button>
+
         </div>
 
-        <button class="basket-btn" onclick="openBasket()">
-            <i class="fas fa-shopping-basket"></i>
-            <span>Basket</span>
-            <b id="basket-count">0</b>
-        </button>
 
-    </header>
+        <!-- EGG RICE -->
+
+        <div class="menu-item" data-category="rice">
+
+            <h2>Egg Rice</h2>
+
+            <p>₹80</p>
+
+            <button onclick="changeQty('Egg Rice', 80, -1)">
+                −
+            </button>
+
+            <span id="qty-Egg Rice">0</span>
+
+            <button onclick="changeQty('Egg Rice', 80, 1)">
+                +
+            </button>
+
+        </div>
 
 
-    <!-- ================= GO TO CART ================= -->
+        <!-- CHILLI CHICKEN -->
 
-    <button
-        id="go-cart-btn"
-        class="go-cart-btn"
-        onclick="openBasket()">
-        🛒 Go to Cart
+        <div class="menu-item" data-category="chicken">
+
+            <h2>Chilli Chicken</h2>
+
+            <p>₹149</p>
+
+            <button onclick="changeQty('Chilli Chicken', 149, -1)">
+                −
+            </button>
+
+            <span id="qty-Chilli Chicken">0</span>
+
+            <button onclick="changeQty('Chilli Chicken', 149, 1)">
+                +
+            </button>
+
+       </div><button onclick="showCategory('biryani')">
+           
+<!-- VEG RICE -->
+
+<div class="menu-item" data-category="rice">
+
+    <h2>Veg Rice</h2>
+
+    <p>₹60</p>
+
+    <button onclick="changeQty('Veg Rice', 60, -1)">
+        −
     </button>
 
+    <span id="qty-Veg Rice">0</span>
 
-    <!-- ================= CATEGORIES ================= -->
+    <button onclick="changeQty('Veg Rice', 60, 1)">
+        +
+    </button>
 
-    <section class="categories-section">
+</div><!-- GOBI RICE -->
 
-        <h2>Choose Category</h2>
+<div class="menu-item" data-category="rice">
 
-        <div class="categories">
+    <h2>Gobi Rice</h2>
+    <p>₹80</p>
 
-            <button onclick="showCategory('all')" class="category active">
-                🍽️ All
-            </button>
-
-            <button onclick="showCategory('veg')" class="category">
-                🥬 Veg
-            </button>
-
-            <button onclick="showCategory('nonveg')" class="category">
-                🍗 Non-Veg
-            </button>
-
-            <button onclick="showCategory('biryani')" class="category">
-                🍛 Biryani
-            </button>
-
-            <button onclick="showCategory('noodles')" class="category">
-                🍜 Noodles
-            </button>
-
-            <button onclick="showCategory('egg')" class="category">
-                🥚 Egg
-            </button>
-
-            <button onclick="showCategory('starters')" class="category">
-                🌶️ Starters
-            </button>
-
-            <button onclick="showCategory('breads')" class="category">
-                🫓 Breads
-            </button>
-
-            <button onclick="showCategory('combos')" class="category">
-                🍱 Combos
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= MENU ================= -->
-
-    <section id="menu" class="menu">
-
-        <h2>Our Menu</h2>
-
-        <div class="menu-grid">
-
-
-            <!-- CHICKEN RICE -->
-
-            <div class="menu-item card" data-category="nonveg">
-
-                <h3>🍗 Chicken Rice</h3>
-                <p>₹100</p>
-
-                <div class="quantity">
-    <button onclick="changeQty('Chicken Rice',100,-1)">−</button>
-    <span id="qty-Chicken Rice">0</span>
-    <button onclick="changeQty('Chicken Rice',100,1)">+</button>
-</div>
-            </div>
-
-
-            <!-- GOBI RICE -->
-
-            <div class="menu-item card" data-category="veg">
-
-                <h3>🥦 Gobi Rice</h3>
-                <p>₹80</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Gobi Rice',80,-1)">−</button>
-                    <span id="qty-Gobi Rice">0</span>
-                    <button onclick="changeQty('Gobi Rice',80,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- EGG RICE -->
-
-            <div class="menu-item card" data-category="egg">
-
-                <h3>🥚 Egg Rice</h3>
-                <p>₹80</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Egg Rice',80,-1)">−</button>
-                    <span id="qty-Egg Rice">0</span>
-                    <button onclick="changeQty('Egg Rice',80,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- VEG RICE -->
-
-            <div class="menu-item card" data-category="veg">
-
-                <h3>🥬 Veg Rice</h3>
-                <p>₹60</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Veg Rice',60,-1)">−</button>
-                    <span id="qty-Veg Rice">0</span>
-                    <button onclick="changeQty('Veg Rice',60,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHITTI MUTHYALU BIRYANI -->
-
-            <div class="menu-item card" data-category="biryani">
-
-                <h3>🍛 Chitti Muthyalu Biryani</h3>
-                <p>₹199</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chitti Muthyalu Biryani',199,-1)">−</button>
-                    <span id="qty-Chitti Muthyalu Biryani">0</span>
-                    <button onclick="changeQty('Chitti Muthyalu Biryani',199,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHICKEN BIRYANI -->
-
-            <div class="menu-item card" data-category="biryani">
-
-                <h3>🍗 Chicken Biryani</h3>
-                <p>₹120</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chicken Biryani',120,-1)">−</button>
-                    <span id="qty-Chicken Biryani">0</span>
-                    <button onclick="changeQty('Chicken Biryani',120,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- EGG NOODLES -->
-
-            <div class="menu-item card" data-category="noodles">
-
-                <h3>🍜 Egg Noodles</h3>
-                <p>₹80</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Egg Noodles',80,-1)">−</button>
-                    <span id="qty-Egg Noodles">0</span>
-                    <button onclick="changeQty('Egg Noodles',80,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHICKEN NOODLES -->
-
-            <div class="menu-item card" data-category="noodles">
-
-                <h3>🍜 Chicken Noodles</h3>
-                <p>₹99</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chicken Noodles',99,-1)">−</button>
-                    <span id="qty-Chicken Noodles">0</span>
-                    <button onclick="changeQty('Chicken Noodles',99,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- VEG NOODLES -->
-
-            <div class="menu-item card" data-category="noodles">
-
-                <h3>🍜 Veg Noodles</h3>
-                <p>₹60</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Veg Noodles',60,-1)">−</button>
-                    <span id="qty-Veg Noodles">0</span>
-                    <button onclick="changeQty('Veg Noodles',60,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- GOBI NOODLES -->
-
-            <div class="menu-item card" data-category="noodles">
-
-                <h3>🍜 Gobi Noodles</h3>
-                <p>₹75</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Gobi Noodles',75,-1)">−</button>
-                    <span id="qty-Gobi Noodles">0</span>
-                    <button onclick="changeQty('Gobi Noodles',75,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHILLI CHICKEN BONE -->
-
-            <div class="menu-item card" data-category="starters">
-
-                <h3>🌶️ Chilli Chicken Bone</h3>
-                <p>₹130</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chilli Chicken Bone',130,-1)">−</button>
-                    <span id="qty-Chilli Chicken Bone">0</span>
-                    <button onclick="changeQty('Chilli Chicken Bone',130,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHILLI CHICKEN BONELESS -->
-
-            <div class="menu-item card" data-category="starters">
-
-                <h3>🌶️ Chilli Chicken Boneless</h3>
-                <p>₹150</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chilli Chicken Boneless',150,-1)">−</button>
-                    <span id="qty-Chilli Chicken Boneless">0</span>
-                    <button onclick="changeQty('Chilli Chicken Boneless',150,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- GOBI MANCHURIAN -->
-
-            <div class="menu-item card" data-category="starters">
-
-                <h3>🥦 Gobi Manchurian</h3>
-                <p>₹79</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Gobi Manchurian',79,-1)">−</button>
-                    <span id="qty-Gobi Manchurian">0</span>
-                    <button onclick="changeQty('Gobi Manchurian',79,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- KHUSKA -->
-
-            <div class="menu-item card" data-category="veg">
-
-                <h3>🍚 Khuska</h3>
-                <p>₹80</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Khuska',80,-1)">−</button>
-                    <span id="qty-Khuska">0</span>
-                    <button onclick="changeQty('Khuska',80,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- EGG BURJI 2 -->
-
-            <div class="menu-item card" data-category="egg">
-
-                <h3>🥚 Egg Burji 2 Eggs</h3>
-                <p>₹40</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Egg Burji 2 Eggs',40,-1)">−</button>
-                    <span id="qty-Egg Burji 2 Eggs">0</span>
-                    <button onclick="changeQty('Egg Burji 2 Eggs',40,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- EGG BURJI 3 -->
-
-            <div class="menu-item card" data-category="egg">
-
-                <h3>🥚 Egg Burji 3 Eggs</h3>
-                <p>₹50</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Egg Burji 3 Eggs',50,-1)">−</button>
-                    <span id="qty-Egg Burji 3 Eggs">0</span>
-                    <button onclick="changeQty('Egg Burji 3 Eggs',50,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- BREADS -->
-
-            <div class="menu-item card" data-category="breads">
-
-                <h3>🫓 Chapati / Parota</h3>
-                <p>2 Pieces ₹40</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chapati Parota 2 Pieces',40,-1)">−</button>
-                    <span id="qty-Chapati Parota 2 Pieces">0</span>
-                    <button onclick="changeQty('Chapati Parota 2 Pieces',40,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- CHICKEN PAKODA -->
-
-            <div class="menu-item card" data-category="starters">
-
-                <h3>🍗 Chicken Pakoda 100gm</h3>
-                <p>₹50</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chicken Pakoda 100gm',50,-1)">−</button>
-                    <span id="qty-Chicken Pakoda 100gm">0</span>
-                    <button onclick="changeQty('Chicken Pakoda 100gm',50,1)">+</button>
-                </div>
-
-                <h3 class="sub-item">🍗 Chicken Pakoda 250gm</h3>
-                <p>₹120</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Chicken Pakoda 250gm',120,-1)">−</button>
-                    <span id="qty-Chicken Pakoda 250gm">0</span>
-                    <button onclick="changeQty('Chicken Pakoda 250gm',120,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- COMBO 1 -->
-
-            <div class="menu-item card" data-category="combos">
-
-                <h3>🍳 Egg Rice + 6P Chilli Chicken + Campa</h3>
-                <p>₹155</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Egg Rice Chilli Chicken Campa Combo',155,-1)">−</button>
-                    <span id="qty-Egg Rice Chilli Chicken Campa Combo">0</span>
-                    <button onclick="changeQty('Egg Rice Chilli Chicken Campa Combo',155,1)">+</button>
-                </div>
-
-            </div>
-
-
-            <!-- COMBO 2 -->
-
-            <div class="menu-item card" data-category="combos">
-
-                <h3>🥦 Gobi Rice + Gobi Manchurian + Campa</h3>
-                <p>₹139</p>
-
-                <div class="quantity">
-                    <button onclick="changeQty('Gobi Rice Gobi Manchurian Campa Combo',139,-1)">−</button>
-                    <span id="qty-Gobi Rice Gobi Manchurian Campa Combo">0</span>
-                    <button onclick="changeQty('Gobi Rice Gobi Manchurian Campa Combo',139,1)">+</button>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= BASKET ================= -->
-
-    <div id="basket-panel" class="basket-panel">
-
-        <div class="basket-header">
-
-            <h2>🛒 Your Basket</h2>
-
-            <button onclick="closeBasket()">✕</button>
-
-        </div>
-
-        <div id="basket-items">
-            <p>Your basket is empty</p>
-        </div>
-
-        <div class="basket-total">
-
-            <h3>
-                Total: ₹<span id="basket-total">0</span>
-            </h3>
-
-            <button class="btn order-now-btn" onclick="openPayment()">
-                ORDER NOW
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= PAYMENT ================= -->
-
-    <div id="payment-panel" class="payment-panel">
-
-        <div class="payment-box">
-
-            <button class="close-btn" onclick="closePayment()">
-                ✕
-            </button>
-
-            <h2>💳 Payment Options</h2>
-
-            <button
-                class="payment-option"
-                onclick="selectPayment('Cash on Delivery')">
-                💵 Cash on Delivery
-            </button>
-
-            <button
-                class="payment-option"
-                onclick="payWithUPI()">
-                📱 Pay with UPI
-            </button>
-
-            <button
-                class="payment-option"
-                onclick="payWithUPI()">
-                🟣 PhonePe / Google Pay / Paytm
-            </button>
-
-            <div class="upi-box">
-
-                <p>UPI ID</p>
-
-                <strong>8117833787@YBL</strong>
-
-                <button class="copy-upi" onclick="copyUPI()">
-                    📋 Copy UPI ID
-                </button>
-
-            </div>
-
-            <button class="btn" onclick="orderDone()">
-                ✅ ORDER DONE
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= ORDER STATUS ================= -->
-
-    <div id="order-status" class="order-status">
-
-        <h2>✅ Order Confirmed</h2>
-
-        <p class="success-text">
-            Thank you for ordering from Spicy Station! 🌶️
-        </p>
-
-        <div class="status-step active">
-            <span>1</span>
-            Order Preparing
-        </div>
-
-        <div class="status-step">
-            <span>2</span>
-            Pickup
-        </div>
-
-        <div class="status-step">
-            <span>3</span>
-            Delivery Boy On Road
-        </div>
-
-        <div class="status-address">
-
-            <h3>📍 Delivery Address</h3>
-
-            <p>
-                Narsapuram M. L. N R Plaza,<br>
-                R. S. Road, Koduru - 516101
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= GALLERY ================= -->
-
-    <section class="gallery">
-
-        <h2>Food Gallery</h2>
-
-        <div class="gallery-grid">
-
-            <img src="biryani.png" alt="Biryani">
-            <img src="fried-rice.png" alt="Fried Rice">
-            <img src="chilli-1.png" alt="Chilli Chicken">
-            <img src="pakoda.png" alt="Chicken Pakoda">
-            <img src="shop-1.png" alt="Spicy Station">
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact">
-
-        <h2>Contact Us</h2>
-
-        <p>
-            📍 Narsapuram M. L. N R Plaza,
-            R. S. Road, Koduru - 516101
-        </p>
-
-        <a href="tel:+918117833787" class="btn">
-            📞 Call Now
-        </a>
-
-        <a href="https://wa.me/918117833787" class="btn">
-            💬 Order on WhatsApp
-        </a>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>© 2026 Spicy Station Fast Food</p>
-
-    </footer>
+    <button onclick="changeQty('Gobi Rice', 80, -1)">−</button>
+    <span id="qty-Gobi Rice">0</span>
+    <button onclick="changeQty('Gobi Rice', 80, 1)">+</button>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ZEERA RICE -->
+
+<div class="menu-item" data-category="rice">
+
+    <h2>Zeera Rice</h2>
+    <p>₹60</p>
+
+    <button onclick="changeQty('Zeera Rice', 60, -1)">−</button>
+    <span id="qty-Zeera Rice">0</span>
+    <button onclick="changeQty('Zeera Rice', 60, 1)">+</button>
+
+</div>
+
+
+<!-- PANEER FRIED RICE -->
+
+<div class="menu-item" data-category="rice">
+
+    <h2>Paneer Fried Rice</h2>
+    <p>₹120</p>
+
+    <button onclick="changeQty('Paneer Fried Rice', 120, -1)">−</button>
+    <span id="qty-Paneer Fried Rice">0</span>
+    <button onclick="changeQty('Paneer Fried Rice', 120, 1)">+</button>
+
+</div><!-- HYD CHICKEN DUM BIRYANI -->
+
+<div class="menu-item" data-category="biryani">
+
+    <h2>Hyd Chicken Dum Biryani</h2>
+    <p>₹160</p>
+
+    <button onclick="changeQty('Hyd Chicken Dum Biryani', 160, -1)">−</button>
+    <span id="qty-Hyd Chicken Dum Biryani">0</span>
+    <button onclick="changeQty('Hyd Chicken Dum Biryani', 160, 1)">+</button>
+
+</div>
+
+
+<!-- HYD CHICKEN DUM BIRYANI MINI -->
+
+<div class="menu-item" data-category="biryani">
+
+    <h2>Hyd Chicken Dum Biryani Mini</h2>
+    <p>₹120</p>
+
+    <button onclick="changeQty('Hyd Chicken Dum Biryani Mini', 120, -1)">−</button>
+    <span id="qty-Hyd Chicken Dum Biryani Mini">0</span>
+    <button onclick="changeQty('Hyd Chicken Dum Biryani Mini', 120, 1)">+</button>
+
+</div>
+
+
+<!-- SUNDAY SPECIAL -->
+
+<div class="menu-item" data-category="biryani">
+
+    <h2>Sunday Special Chitti Muthiyalu Biryani</h2>
+    <p>₹199</p>
+
+    <button onclick="changeQty('Sunday Special Chitti Muthiyalu Biryani', 199, -1)">−</button>
+    <span id="qty-Sunday Special Chitti Muthiyalu Biryani">0</span>
+    <button onclick="changeQty('Sunday Special Chitti Muthiyalu Biryani', 199, 1)">+</button>
+
+</div><!-- ================= STARTERS ================= -->
+
+<!-- GOBI MANCHURIAN -->
+
+<div class="menu-item" data-category="starters">
+
+    <h2>Gobi Manchurian</h2>
+    <p>₹80</p>
+
+    <button onclick="changeQty('Gobi Manchurian', 80, -1)">
+        −
+    </button>
+
+    <span id="qty-Gobi Manchurian">0</span>
+
+    <button onclick="changeQty('Gobi Manchurian', 80, 1)">
+        +
+    </button>
+
+</div>
+
+
+<!-- CHILLI CHICKEN -->
+
+<div class="menu-item" data-category="starters">
+
+    <h2>Chilli Chicken</h2>
+    <p>₹150</p>
+
+    <button onclick="changeQty('Chilli Chicken', 150, -1)">
+        −
+    </button>
+
+    <span id="qty-Chilli Chicken">0</span>
+
+    <button onclick="changeQty('Chilli Chicken', 150, 1)">
+        +
+    </button>
+
+</div><!-- ================= NOODLE ================= -->
+
+<div class="menu-item" data-category="noodle">
+
+    <h2>Chicken Noodle</h2>
+    <p>₹100</p>
+
+    <button onclick="changeQty('Chicken Noodle', 100, -1)">
+        −
+    </button>
+
+    <span id="qty-Chicken Noodle">0</span>
+
+    <button onclick="changeQty('Chicken Noodle', 100, 1)">
+        +
+    </button>
+
+</div>
+
+
+<div class="menu-item" data-category="noodle">
+
+    <h2>Gobi Noodle</h2>
+    <p>₹80</p>
+
+    <button onclick="changeQty('Gobi Noodle', 80, -1)">
+        −
+    </button>
+
+    <span id="qty-Gobi Noodle">0</span>
+
+    <button onclick="changeQty('Gobi Noodle', 80, 1)">
+        +
+    </button>
+
+</div>
+
+
+<div class="menu-item" data-category="noodle">
+
+    <h2>Veg Noodle</h2>
+    <p>₹60</p>
+
+    <button onclick="changeQty('Veg Noodle', 60, -1)">
+        −
+    </button>
+
+    <span id="qty-Veg Noodle">0</span>
+
+    <button onclick="changeQty('Veg Noodle', 60, 1)">
+        +
+    </button>
+
+</div>
+
+
+<div class="menu-item" data-category="noodle">
+
+    <h2>Gobi Manchurian Noodle</h2>
+    <p>₹100</p>
+
+    <button onclick="changeQty('Gobi Manchurian Noodle', 100, -1)">
+        −
+    </button>
+
+    <span id="qty-Gobi Manchurian Noodle">0</span>
+
+    <button onclick="changeQty('Gobi Manchurian Noodle', 100, 1)">
+        +
+    </button>
+
+</div><!-- ================= COMBO ================= -->
+
+<div class="menu-item" data-category="combo">
+
+    <h2>Chilli Chicken 6P + Egg Rice + Cool Drink</h2>
+    <p>₹150</p>
+
+    <button onclick="changeQty('Chilli Chicken 6P + Egg Rice + Cool Drink', 150, -1)">
+        −
+    </button>
+
+    <span id="qty-Chilli Chicken 6P + Egg Rice + Cool Drink">0</span>
+
+    <button onclick="changeQty('Chilli Chicken 6P + Egg Rice + Cool Drink', 150, 1)">
+        +
+    </button>
+
+</div>
+
+
+<div class="menu-item" data-category="combo">
+
+    <h2>Gobi Manchurian + Veg Rice</h2>
+    <p>₹100</p>
+
+    <button onclick="changeQty('Gobi Manchurian + Veg Rice', 90, -1)">
+        −
+    </button>
+
+    <span id="qty-Gobi Manchurian + Veg Rice">0</span>
+
+    <button onclick="changeQty('Gobi Manchurian + Veg Rice', 90, 1)">
+        +
+    </button>
+
+</div><!-- ================= EGGS ================= -->
+
+<div class="menu-item" data-category="eggs">
+
+    <h2>Egg Burji - 3 Eggs</h2>
+    <p>₹50</p>
+
+    <button onclick="changeQty('Egg Burji - 3 Eggs', 50, -1)">
+        −
+    </button>
+
+    <span id="qty-Egg Burji - 3 Eggs">0</span>
+
+    <button onclick="changeQty('Egg Burji - 3 Eggs', 50, 1)">
+        +
+    </button>
+
+</div>
+        <!-- BASKET BUTTON -->
+
+        <button onclick="openBasket()">
+            🛒 Basket
+            <span id="basket-count">0</span>
+        </button>
+    </section>
+
+<!-- BASKET -->
+
+<div id="basket-panel" style="display:none;">
+
+    <h2>🛒 Your Basket</h2>
+
+    <div id="basket-items">
+        <p>🛒 Basket is empty</p>
+    </div>
+
+    <h3>
+        Total: ₹<span id="basket-total">0</span>
+    </h3>
+<!-- CUSTOMER DETAILS -->
+
+<div id="customer-details">
+
+    <h3>📝 Customer Details</h3>
+
+    <input
+        type="text"
+        id="customer-name"
+        placeholder="Your Name"
+    >
+
+    <input
+        type="tel"
+        id="customer-phone"
+        placeholder="Mobile Number"
+    >
+
+    <textarea
+        id="customer-address"
+        placeholder="Delivery Address"
+        rows="3"
+    ></textarea>
+<!-- PAYMENT METHOD -->
+
+<div id="payment-method">
+
+    <h3>💳 Payment Method</h3>
+
+    <label>
+        <input
+            type="radio"
+            name="payment"
+            value="Cash"
+            checked
+        >
+        💵 Cash on Delivery
+    </label>
+
+    <br><br>
+
+    <label>
+        <input
+            type="radio"
+            name="payment"
+            value="UPI"
+        >
+        📲 UPI Payment
+    </label>
+    
+    <button
+    type="button"
+    onclick="payWithUPI()">
+    💳 Pay Now with UPI
+</button>
+<button onclick="placeOrder()">
+    📲 Place Order on WhatsApp
+</button>
+</div>
+    <button onclick="closeBasket()">
+        Close Basket
+    </button>
+
+</div>
+
+    <!-- IMPORTANT -->
 <script>
-window.openMenu = function () {
+function openMenu() {
     document.getElementById("welcome").style.display = "none";
     document.getElementById("main-app").style.display = "block";
-};
-</script>
-<script src="script.js"></script>
-<script>
-function changeQty(name, price, change) {
-    price = Number(price);
-    change = Number(change);
-
-    if (!window.cart) {
-        window.cart = {};
-    }
-
-    if (!cart[name]) {
-        cart[name] = {
-            price: price,
-            qty: 0
-        };
-    }
-
-    cart[name].qty += change;
-
-    if (cart[name].qty < 0) {
-        cart[name].qty = 0;
-    }
-
-    const qtyElement = document.getElementById("qty-" + name);
-
-    if (qtyElement) {
-        qtyElement.textContent = cart[name].qty;
-    }
-
-    updateBasketNotification();
 }
 
-function updateBasketNotification() {
-    let totalQty = 0;
-
-    Object.values(cart).forEach(function(item) {
-        totalQty += item.qty;
-    });
-
-    const badge = document.getElementById("basket-count");
-
-    if (badge) {
-        badge.textContent = totalQty;
-    }
-}
-
-</script>
-function openBasket() {
-    const basketPanel = document.getElementById("basket-panel");
-
-    if (basketPanel) {
-        basketPanel.classList.add("show");
-    }
-}
-function closeBasket() {
-    const basketPanel = document.getElementById("basket-panel");
-    if (basketPanel) {
-        basketPanel.classList.remove("show");
-    }
-}
-</script>
-<script src="./script.js?v=999"></script>
-<script>
 function showCategory(category) {
     const items = document.querySelectorAll(".menu-item");
 
@@ -712,13 +484,264 @@ function showCategory(category) {
         const itemCategory = item.getAttribute("data-category");
 
         if (category === "all" || itemCategory === category) {
-            item.style.display = "";
+            item.style.display = "block";
         } else {
             item.style.display = "none";
         }
     });
 }
-<script src="./script.js?v=999"></script>
+
+let cart = {};
+function openBasket() {
+
+    const panel =
+        document.getElementById("basket-panel");
+
+    if (!panel) return;
+
+    updateBasket();
+
+    panel.style.display = "block";
+}
+
+
+function closeBasket() {
+
+    const panel =
+        document.getElementById("basket-panel");
+
+    if (!panel) return;
+
+    panel.style.display = "none";
+}
+
+
+function updateBasket() {
+
+    const items =
+        document.getElementById("basket-items");
+
+    const totalElement =
+        document.getElementById("basket-total");
+
+    const countElement =
+        document.getElementById("basket-count");
+
+    if (!items || !totalElement) return;
+
+    items.innerHTML = "";
+
+    let total = 0;
+    let count = 0;
+
+    Object.keys(cart).forEach(function(name) {
+
+        const item = cart[name];
+
+        if (item.qty <= 0) return;
+
+        const itemTotal =
+            item.price * item.qty;
+
+        total += itemTotal;
+        count += item.qty;
+
+        const div =
+            document.createElement("div");
+
+        div.innerHTML = `
+            <p>
+                <strong>${name}</strong>
+                <br>
+                ₹${item.price} × ${item.qty}
+                = ₹${itemTotal}
+            </p>
+        `;
+
+        items.appendChild(div);
+    });
+
+    if (count === 0) {
+        items.innerHTML =
+            "<p>🛒 Basket is empty</p>";
+    }
+
+    totalElement.textContent = total;
+
+    if (countElement) {
+        countElement.textContent = count;
+    }
+}
+function changeQty(name, price, change) {
+
+    price = Number(price);
+    change = Number(change);
+if (!cart[name]) {
+    cart[name] = {
+        price: price,
+        qty: 0
+    };
+}
+    cart[name].qty += change;
+
+if (cart[name].qty < 0) {
+    cart[name].qty = 0;
+}
+
+const quantity = document.getElementById("qty-" + name);
+
+if (quantity) {
+    quantity.textContent = cart[name].qty;
+}
+
+updateBasket();
+
+}function getCartItemCount() {
+
+    let count = 0;
+
+    Object.keys(cart).forEach(function(name) {
+
+        if (cart[name].qty > 0) {
+            count += cart[name].qty;
+        }
+
+    });
+
+    return count;
+}
+
+
+function placeOrder() {
+
+    const name =
+        document.getElementById("customer-name").value.trim();
+
+    const phone =
+        document.getElementById("customer-phone").value.trim();
+
+    const address =
+        document.getElementById("customer-address").value.trim();
+
+    const payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        );
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    if (phone === "") {
+        alert("Please enter your mobile number");
+        return;
+    }
+
+    if (address === "") {
+        alert("Please enter your delivery address");
+        return;
+    }
+
+    if (getCartItemCount() === 0) {
+        alert("Your basket is empty");
+        return;
+    }
+const orderID =
+    "SS-" + Date.now().toString().slice(-6);
+    let message =
+        "🌶️ SPICY STATION FAST FOOD\n\n";
+message +=
+    "🧾 Order ID: " + orderID + "\n\n";
+    message += "👤 Customer: " + name + "\n";
+    message += "📱 Mobile: " + phone + "\n";
+    message += "📍 Address: " + address + "\n\n";
+
+    message += "🛒 ORDER DETAILS\n\n";
+
+    let total = 0;
+
+    Object.keys(cart).forEach(function(itemName) {
+
+        const item = cart[itemName];
+
+        if (item.qty <= 0) return;
+
+        const itemTotal =
+            item.price * item.qty;
+
+        total += itemTotal;
+
+        message +=
+            itemName +
+            " × " +
+            item.qty +
+            " = ₹" +
+            itemTotal +
+            "\n";
+    });
+
+    message += "\n💰 TOTAL: ₹" + total + "\n";
+
+    message +=
+        "💳 Payment: " +
+        (payment ? payment.value : "Cash") +
+        "\n\n";
+message +=
+    "📞 Spicy Station: 8117833787\n";
+
+message +=
+    "🙏 Thank you for ordering with us!";
+
+    const whatsappNumber = "918117833787";
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");cart = {};
+
+updateBasket();
+
+document.querySelectorAll(".menu-item span[id^='qty-']")
+    .forEach(function(element) {
+        element.textContent = "0";
+    });
+}function payWithUPI() {
+
+    if (getCartItemCount() === 0) {
+        alert("Your basket is empty");
+        return;
+    }
+
+    let total = 0;
+
+    Object.keys(cart).forEach(function(name) {
+
+        const item = cart[name];
+
+        if (item.qty > 0) {
+            total += item.price * item.qty;
+        }
+
+    });
+
+    const upiID = "8117833787@YBL";
+    const businessName = "Spicy Station Fast Food";
+
+    const upiURL =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent(upiID) +
+        "&pn=" + encodeURIComponent(businessName) +
+        "&am=" + total +
+        "&cu=INR";
+
+    window.location.href = upiURL;
+}
+</script>
+
 
 </body>
 </html>
